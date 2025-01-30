@@ -5,8 +5,6 @@ mentor https://github.com/hkproj/
 
 Day 1:
 
-File : 
-
 Summary : Used CUDA to add two arrays in parallel, with each thread handling one pair of values.
 
 Learned:
