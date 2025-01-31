@@ -76,6 +76,13 @@ int main() {
     // Copy result back to host
     cudaMemcpy(h_C_gpu, d_C, size, cudaMemcpyDeviceToHost);
 
+    // ---------------- Print Results ----------------
+    std::cout << "\nFirst 10 Vector Addition Results (CPU vs. GPU):\n";
+    std::cout << "Index\tCPU\tGPU\n";
+    for (int i = 0; i < 10; i++) {
+        std::cout << i << "\t" << h_C_cpu[i] << "\t" << h_C_gpu[i] << "\n";
+    }
+
     // Verify results
     bool correct = true;
     for (int i = 0; i < N; i++) {
@@ -86,10 +93,10 @@ int main() {
         }
     }
     if (correct) {
-        std::cout << "Results match!\n";
+        std::cout << "\nResults match!\n";
     }
     else {
-        std::cout << "Results do not match!\n";
+        std::cout << "\nResults do not match!\n";
     }
 
     // Free GPU memory
