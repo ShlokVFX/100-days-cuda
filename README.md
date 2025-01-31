@@ -3,4 +3,3 @@ A deep dive into GPU programming and parallel computing  This repository documen
 
 mentor https://github.com/hkproj/
 
-Day 1: https://github.com/ShlokVFX/100-days-cuda/tree/main/Day1
