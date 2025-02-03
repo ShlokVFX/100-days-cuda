@@ -9,12 +9,12 @@ Instructions: https://github.com/hkproj/100-days-of-cuda
 
 Notes From each Day: 
 
-Day 1 - https://github.com/ShlokVFX/100-days-cuda/tree/main/Day1
+Day 1 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day1/Notes.md
 
-Day 2 - https://github.com/ShlokVFX/100-days-cuda/tree/main/Day2
+Day 2 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day2/Notes.md
 
-Day 3 - https://github.com/ShlokVFX/100-days-cuda/tree/main/Day3
+Day 3 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day3/Notes.md
 
-Day 4 - https://github.com/ShlokVFX/100-days-cuda/tree/main/Day4
+Day 4 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day4/Notes.md
 
-Day 5 - https://github.com/ShlokVFX/100-days-cuda/tree/main/Day5
+Day 5 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day5/Notes.md
