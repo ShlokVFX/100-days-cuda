@@ -7,7 +7,8 @@ Learned:
  How to manage GPU memory with cudaMalloc, cudaMemcpy, and cudaFree.
 
  Resource - I followed a CUDA course on YouTube from freeCodeCamp. 
- Also this repo - 
+ 
+Also used this repo as myy learning resource- 
 https://github.com/Infatoshi/cuda-course/tree/master/05_Writing_your_First_Kernels/01%20CUDA%20Basics
  
 
