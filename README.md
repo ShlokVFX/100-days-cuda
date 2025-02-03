@@ -7,6 +7,8 @@ Discord : https://discord.gg/4Tg4TkJQzE
 
 Instructions: https://github.com/hkproj/100-days-of-cuda
 
+Notes From each Day: 
+
 Day 1 - https://github.com/ShlokVFX/100-days-cuda/tree/main/Day1
 
 Day 2 - https://github.com/ShlokVFX/100-days-cuda/tree/main/Day2
