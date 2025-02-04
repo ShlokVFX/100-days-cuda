@@ -8,6 +8,17 @@ This repository contains an optimized CUDA implementation of matrix transpositio
 - Employing **proper thread synchronization** using `__syncthreads()`.
 - Using **CUDA event timing** for precise performance measurement.
 
+## Ensuring Coalesced Global Memory Access
+Coalesced memory access refers to a pattern where multiple threads in a warp access consecutive memory locations, leading to efficient memory transactions. In CUDA, global memory is accessed in 32-, 64-, or 128-byte memory transactions, so ensuring that threads access memory in a sequential, aligned manner minimizes memory latency.
+
+### How This Code Achieves Coalesced Access:
+1. **Row-wise Read from Global Memory**:
+   - Each thread reads an element from a row in a **sequential** manner, ensuring minimal memory transactions.
+2. **Shared Memory Usage**:
+   - The data is stored in shared memory with padding to **avoid bank conflicts**, allowing efficient memory reuse.
+3. **Column-wise Write to Global Memory**:
+   - The transposed data is written back in a way that ensures each warp accesses contiguous memory, optimizing memory throughput.
+
 ## Requirements
 To compile and run the code, ensure you have:
 - **CUDA Toolkit** installed
