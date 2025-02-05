@@ -93,11 +93,4 @@ nvcc -O3 -o optimized_gemm optimized_gemm.cu
 - ✅ **Error Check:** Compares GPU results with CPU reference.
 - ✅ **Time Measurement:** Reports execution time in milliseconds.
 
----
 
-## **License**
-MIT License. See [LICENSE](LICENSE) for details.
-
----
-
-This README provides a precise and structured explanation of your CUDA GEMM implementation. 🚀
