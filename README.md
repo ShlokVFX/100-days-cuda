@@ -1,4 +1,4 @@
-# 100-Days-of-Learning-CUDA-Kernels-
+### 100-Days-of-Learning-CUDA-Kernels- ###
 A deep dive into GPU programming and parallel computing  This repository documents my 100-day journey of learning and writing CUDA kernels. The goal is to explore GPU acceleration, optimize parallel computations, and gain hands-on experience with CUDA for high-performance computing.
 
 Mentor: https://github.com/hkproj/
@@ -21,4 +21,6 @@ Day 5 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day5/Notes.md
 
 Day 6 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day6/Notes.md
 
-Day 7 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day6/Notes.md
+Day 7 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day7/Notes.md
+
+Day 8 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day8/Notes.md
