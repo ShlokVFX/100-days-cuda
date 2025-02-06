@@ -1,4 +1,4 @@
-### **Comparison of WMMA (Tensor Core) vs. Double Buffering in CUDA Matrix Multiplication**
+#  Comparison of WMMA (Tensor Core) vs. Double Buffering in CUDA Matrix Multiplication #
 
 Both **WMMA (Warp Matrix Multiply-Accumulate, Tensor Core)** and **double buffering** are techniques used to optimize CUDA matrix multiplication, but they work in fundamentally different ways.
 
