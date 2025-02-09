@@ -28,4 +28,6 @@ Day 8 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day8/Notes.md
 
 Day 9 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2009/Notes.md
 
-Day10 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2010/Notes.md
+Day 10 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2010/Notes.md
+
+Day 11 - https://github.com/ShlokVFX/100-days-cuda/tree/main/Day%2011/Notes.md
