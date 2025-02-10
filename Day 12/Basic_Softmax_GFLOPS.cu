@@ -63,8 +63,26 @@ void softmax(float* h_input, float* h_output, int rows, int cols) {
     // Copy data to device
     cudaMemcpy(d_input, h_input, size, cudaMemcpyHostToDevice);
 
+        // Create events for timing
+        cudaEvent_t start, stop;
+        cudaEventCreate(&start);
+        cudaEventCreate(&stop);
+    
+        // Record the start time
+        cudaEventRecord(start);
+
     // Launch kernel (1 block per row)
     softmaxKernel<<<rows, BLOCK_SIZE, cols * sizeof(float)>>>(d_input, d_output, rows, cols);
+
+     // Record the stop time
+     cudaEventRecord(stop);
+     cudaEventSynchronize(stop);
+ 
+     // Calculate execution time in milliseconds
+     float elapsedTime;
+     cudaEventElapsedTime(&elapsedTime, start, stop);
+     float timeInSeconds = elapsedTime / 1000.0f;
+ 
     
     // Copy result back
     cudaMemcpy(h_output, d_output, size, cudaMemcpyDeviceToHost);
@@ -72,6 +90,14 @@ void softmax(float* h_input, float* h_output, int rows, int cols) {
     // Free device memory
     cudaFree(d_input);
     cudaFree(d_output);
+
+       // Calculate GFLOPS
+       long long numFLOPs = (long long)rows * cols * 2;  // 2 FLOPs per element: exp and division
+       float gflops = (numFLOPs / timeInSeconds) / 1e9;
+   
+       // Output the results
+       std::cout << "Execution time: " << elapsedTime << " ms\n";
+       std::cout << "GFLOPS: " << gflops << " GFLOPS\n";
 }
 
 // Test function
