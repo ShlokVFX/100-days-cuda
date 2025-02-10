@@ -161,3 +161,7 @@ float h_output[rows * cols];
 #### **Compute Softmax**
 ```cpp
 softmax(h_input, h_output, rows, cols);
+```
+
+![image](https://github.com/user-attachments/assets/80fc63c2-fe6e-488d-8d0b-0df7a9b0ff10)
+
