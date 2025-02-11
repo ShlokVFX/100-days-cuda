@@ -8,28 +8,3 @@ Discord : https://discord.gg/4Tg4TkJQzE
 
 Instructions: https://github.com/hkproj/100-days-of-cuda
 
-Notes From each Day: 
-
-Day 1 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day1/Notes.md
-
-Day 2 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day2/Notes.md
-
-Day 3 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day3/Notes.md
-
-Day 4 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day4/Notes.md
-
-Day 5 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day5/Notes.md
-
-Day 6 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day6/Notes.md
-
-Day 7 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day7/Notes.md
-
-Day 8 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day8/Notes.md
-
-Day 9 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2009/Notes.md
-
-Day 10 - https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2010/Notes.md
-
-Day 11 - https://github.com/ShlokVFX/100-days-cuda/tree/main/Day%2011/Notes.md
-
-Day 12 - https://github.com/ShlokVFX/100-days-cuda/tree/main/Day%2012/Notes.md
