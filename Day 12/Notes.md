@@ -1,6 +1,23 @@
 
+🔥 Optimizations Breakdown
+1️⃣ Warp Shuffle Reductions
 
-### **3️⃣ Warp-Level Reduction Functions**
+    Removes the need for shared memory atomic operations.
+    Reduces synchronization overhead by computing max and sum inside the warp.
+
+2️⃣ Memory Coalescing
+
+    Each thread reads consecutive memory positions, avoiding global memory divergence.
+
+3️⃣ Numerical Stability
+
+    Uses row-wise max subtraction before exponentiation to prevent overflow.
+
+4️⃣ Batch Processing
+
+    Each CUDA block handles a full row, allowing for efficient batch softmax.
+    
+### ** Warp-Level Reduction Functions**
 These functions perform **parallel reductions** inside a warp.
 
 #### **Warp Reduction for Maximum Value**
@@ -27,7 +44,7 @@ __device__ float warpReduceSum(float val) {
 
 ---
 
-### **4️⃣ Softmax Kernel (Row-wise)**
+### ** Softmax Kernel (Row-wise)**
 ```cpp
 __global__ void softmaxOptimized(float* input, float* output, int rows, int cols) {
 ```
@@ -98,7 +115,7 @@ for (int i = tid; i < cols; i += blockDim.x) {
 
 ---
 
-### **5️⃣ Host Function for Kernel Execution**
+### ** Host Function for Kernel Execution**
 ```cpp
 void softmax(float* h_input, float* h_output, int rows, int cols) {
 ```
@@ -145,7 +162,7 @@ cudaFree(d_output);
 
 ---
 
-### **6️⃣ Main Function (Test Case)**
+### ** Main Function (Test Case)**
 ```cpp
 int main() {
 ```
