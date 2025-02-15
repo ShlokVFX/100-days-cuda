@@ -99,10 +99,6 @@ double gflops = (2.0 * n) / (milliseconds / 1000.0 * 1e9);
 ```
 - Measures **execution time**.
 - Computes **GFLOPS** using:
-  \[
-  \text{GFLOPS} = \frac{2n}{\text{time in seconds} \times 10^9}
-  \]
-
 ---
 
 #### **9️⃣ Copy Results Back to Host & Verify**
