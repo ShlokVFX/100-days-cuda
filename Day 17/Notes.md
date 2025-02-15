@@ -1,8 +1,6 @@
 ### **🚀 Summary of cuBLAS SAXPY Implementation**
 This CUDA program uses **cuBLAS** to perform the SAXPY operation:  
-\[
-b = \alpha \cdot a + b
-\]
+
 where **α (factor)** is a scalar and **a, b** are vectors. The program also measures **GFLOPS** and computes **error metrics**.
 
 ---
