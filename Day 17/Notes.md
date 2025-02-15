@@ -84,10 +84,6 @@ cudaEventRecord(start);
 ```cpp
 CHECK_CUBLAS(cublasSaxpy(handle, n, &factor, d_a, 1, d_b, 1));
 ```
-- Computes:  
-  \[
-  b = \alpha \cdot a + b
-  \]
   using **cuBLAS SAXPY**.
 
 ---
