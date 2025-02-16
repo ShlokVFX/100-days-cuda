@@ -1,8 +1,6 @@
 ### **🚀 Summary of cuBLAS SAXPY Implementation**
 This CUDA program uses **cuBLAS** to perform the SAXPY operation:  
-\[
-b = \alpha \cdot a + b
-\]
+
 where **α (factor)** is a scalar and **a, b** are vectors. The program also measures **GFLOPS** and computes **error metrics**.
 
 ---
@@ -86,10 +84,6 @@ cudaEventRecord(start);
 ```cpp
 CHECK_CUBLAS(cublasSaxpy(handle, n, &factor, d_a, 1, d_b, 1));
 ```
-- Computes:  
-  \[
-  b = \alpha \cdot a + b
-  \]
   using **cuBLAS SAXPY**.
 
 ---
@@ -105,10 +99,6 @@ double gflops = (2.0 * n) / (milliseconds / 1000.0 * 1e9);
 ```
 - Measures **execution time**.
 - Computes **GFLOPS** using:
-  \[
-  \text{GFLOPS} = \frac{2n}{\text{time in seconds} \times 10^9}
-  \]
-
 ---
 
 #### **9️⃣ Copy Results Back to Host & Verify**
