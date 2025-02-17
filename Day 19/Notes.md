@@ -132,18 +132,3 @@ if (fabs(custom_result - cublas_result) / fabs(cublas_result) < 1e-3) {
 
 - A **relative tolerance check** (`1e-3`) ensures the results from both methods are close enough before comparing performance. If the results are similar, the speedup of the custom kernel over cuBLAS is printed.
 
-## Results and Conclusion
-
-### Benchmark Results
-
-- **Custom Kernel:** After benchmarking the custom kernel for sum reduction over multiple iterations, the performance was measured at **14.48 GFLOPS**.
-- **cuBLAS:** cuBLAS measured at **13.32 GFLOPS** for the same task.
-- **Speedup:** The custom kernel showed a **8.72% speedup** over cuBLAS in this case.
-
-### Conclusion
-
-While cuBLAS is highly optimized for a wide variety of operations, our **custom kernel** for sum reduction was able to outperform it by a slight margin, as it is highly specialized for this task. The custom kernel's performance is boosted by using shared memory and parallel reduction techniques, while cuBLAS incurs some overhead due to its general-purpose design.
-
-The performance comparison was done using **GPU timing events**, ensuring the measurements are accurate and not influenced by CPU-side timing inaccuracies. This method of benchmarking ensures that both implementations are tested under similar conditions, providing a fair performance comparison.
-
-For larger or more complex operations, cuBLAS would likely outperform the custom kernel due to its highly optimized, parallelized routines for large-scale linear algebra tasks.
