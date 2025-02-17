@@ -1,7 +1,3 @@
-Sure! Below is a sample **README** that you can use for your GitHub repository for the CUDA benchmarking project.
-
----
-
 # CUDA Sum Reduction Benchmarking
 
 This repository contains a CUDA-based benchmarking of sum reduction algorithms using two methods:
