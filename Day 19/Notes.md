@@ -1,12 +1,3 @@
-# CUDA Sum Reduction Benchmarking
-
-This repository contains a CUDA-based benchmarking of sum reduction algorithms using two methods:
-
-1. **Custom Optimized Kernel** - A hand-tuned CUDA kernel for reducing an array of numbers.
-2. **cuBLAS Library** - NVIDIA’s cuBLAS library for optimized sum reduction.
-
-The code compares the performance (in GFLOPS) of both methods and demonstrates how to accurately measure GPU kernel performance using CUDA events. The benchmark is designed for large data sizes to reduce overhead and give a true reflection of the performance differences.
-
 ## Code Explanation
 
 ### Key Definitions
