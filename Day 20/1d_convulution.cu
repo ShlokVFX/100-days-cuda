@@ -88,11 +88,11 @@ int main() {
     float *mask = new float[maskSize];
 
     for (int i = 0; i < inputSize; i++) {
-        input[i] = static_cast<float>(i);
+        input[i] = static_cast<float>(i);  // 1.0f;
     }
 
     for (int i = 0; i < maskSize; i++) {
-        mask[i] = static_cast<float>(i);
+        mask[i] = static_cast<float>(i); // 1.0f;
     }
 
     measureGflops(input, output, mask, inputSize, maskSize);
