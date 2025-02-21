@@ -1,6 +1,12 @@
 import torch
 import triton
 import triton.language as tl
+import matplotlib
+matplotlib.use("Agg")
+
+import matplotlib.pyplot as plt
+import triton.testing
+import numpy as np
 
 # Check if CUDA is available
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
