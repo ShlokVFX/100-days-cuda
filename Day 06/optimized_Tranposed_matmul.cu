@@ -7,9 +7,9 @@
 #include <math.h>
 #include <assert.h>
 
-#define BLOCK_SIZE 32
+#define BLOCK_SIZE 8  // This remains unchanged to support larger matrices
 
-// Optimized matrix transpose kernel using shared memory
+// CUDA Kernel for Matrix Transposition using Shared Memory
 __global__ void transposeKernel(float* input, float* output, int width, int height) {
     __shared__ float tile[BLOCK_SIZE][BLOCK_SIZE + 1]; // Padding to avoid bank conflicts
 
@@ -30,6 +30,19 @@ __global__ void transposeKernel(float* input, float* output, int width, int heig
     }
 }
 
+// Function to print matrices
+void printMatrix(const char* name, float* matrix, int width, int height) {
+    std::cout << name << ":\n";
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            std::cout << matrix[i * width + j] << "\t";
+        }
+        std::cout << "\n";
+    }
+    std::cout << std::endl;
+}
+
+// Host function to perform matrix transposition
 void transpose(float* h_input, float* h_output, int width, int height, float& time) {
     float* d_input, * d_output;
 
@@ -47,7 +60,7 @@ void transpose(float* h_input, float* h_output, int width, int height, float& ti
 
     cudaEventRecord(start);
 
-    transposeKernel << <gridDim, blockDim >> > (d_input, d_output, width, height);
+    transposeKernel <<< gridDim, blockDim >>> (d_input, d_output, width, height);
     cudaDeviceSynchronize(); // Ensure kernel execution completes before timing
 
     cudaEventRecord(stop);
@@ -64,23 +77,23 @@ void transpose(float* h_input, float* h_output, int width, int height, float& ti
 }
 
 int main() {
-    int width = 1024;
-    int height = 1024;
+    int width = 3;
+    int height = 3;
 
-    float* h_input = (float*)malloc(width * height * sizeof(float));
-    float* h_output = (float*)malloc(width * height * sizeof(float));
+    float h_input[9] = { 1, 2, 3, 
+                         4, 5, 6, 
+                         7, 8, 9 };
 
-    for (int i = 0; i < width * height; ++i) {
-        h_input[i] = static_cast<float>(i);
-    }
+    float h_output[9] = { 0 };
 
     float time = 0.0f;
     transpose(h_input, h_output, width, height, time);
 
-    std::cout << "Optimized Kernel Execution time: " << time << "ms" << std::endl;
+    // Print matrices
+    printMatrix("Input Matrix", h_input, width, height);
+    printMatrix("Transposed Matrix", h_output, height, width);
 
-    free(h_input);
-    free(h_output);
+    std::cout << "Optimized Kernel Execution time: " << time << " ms\n";
 
     return 0;
 }

@@ -17,7 +17,7 @@ __global__ void vectorAddUM(int* a, int* b, int* c, int n) {
 void init_vector(int* a, int* b, int n) {
 	for (int i = 0; i < n; i++) {
 		a[i] = rand() % 100;
-		a[i] = rand() % 100;
+		b[i] = rand() % 100;
 
 	}
 }
@@ -30,7 +30,8 @@ void check_answer(int* a, int* b, int* c, int n) {
 int main() {
 
 	//get ID from cuda Calls 
-	int id = cudaGetDevice(&id);
+	int id;
+	cudaGetDevice(&id);
 
 	//elements per array
 	int n = 1 << 16;
@@ -57,7 +58,8 @@ int main() {
 
 	//Grid SIze
 
-	int GRID_SIZE = (int)ceil(n / BLOCK_SIZE);
+	int GRID_SIZE = (n + BLOCK_SIZE - 1) / BLOCK_SIZE;
+
 
 	cudaMemPrefetchAsync(a, bytes, id);
 	cudaMemPrefetchAsync(b, bytes, id);
@@ -74,7 +76,7 @@ int main() {
 
 	check_answer(a, b, c, n);
 
-	printf("completed successfully , result of sum is %d\n", c);
+	printf("Completed successfully , result of sum is %d\n", c[0]);
 
 	return 0;
 }

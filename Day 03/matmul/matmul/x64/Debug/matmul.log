@@ -1,0 +1,148 @@
+﻿  Compiling CUDA source file kernel.cu...
+  
+  D:\GITHUB\100 days cuda\Day 03\matmul>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\include" -I"D:\REPOS\vcpkg\vcpkg\installed\x64-windows\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\include"  -G   --keep-dir matmul\x64\Debug  -maxrregcount=0   --machine 64 --compile -cudart static  -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -Xcompiler "/Fdmatmul\x64\Debug\vc143.pdb" -o "D:\GITHUB\100 days cuda\Day 03\matmul\matmul\x64\Debug\kernel.cu.obj" "D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu" 
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(8): error : name must be a namespace name
+    using namespace nvcuda;
+                    ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(23): error : name followed by "::" must be a class or namespace name
+        wmma::fragment<wmma::matrix_a, WMMA_M, WMMA_N, WMMA_K, half, wmma::row_major> a_frag;
+        ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(23): error : type name is not allowed
+        wmma::fragment<wmma::matrix_a, WMMA_M, WMMA_N, WMMA_K, half, wmma::row_major> a_frag;
+                                                               ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(23): error : name followed by "::" must be a class or namespace name
+        wmma::fragment<wmma::matrix_a, WMMA_M, WMMA_N, WMMA_K, half, wmma::row_major> a_frag;
+                                                                     ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(23): error : identifier "a_frag" is undefined
+        wmma::fragment<wmma::matrix_a, WMMA_M, WMMA_N, WMMA_K, half, wmma::row_major> a_frag;
+                                                                                      ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(24): error : name followed by "::" must be a class or namespace name
+        wmma::fragment<wmma::matrix_b, WMMA_M, WMMA_N, WMMA_K, half, wmma::col_major> b_frag;
+        ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(24): error : type name is not allowed
+        wmma::fragment<wmma::matrix_b, WMMA_M, WMMA_N, WMMA_K, half, wmma::col_major> b_frag;
+                                                               ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(24): error : name followed by "::" must be a class or namespace name
+        wmma::fragment<wmma::matrix_b, WMMA_M, WMMA_N, WMMA_K, half, wmma::col_major> b_frag;
+                                                                     ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(24): error : identifier "b_frag" is undefined
+        wmma::fragment<wmma::matrix_b, WMMA_M, WMMA_N, WMMA_K, half, wmma::col_major> b_frag;
+                                                                                      ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(25): error : name followed by "::" must be a class or namespace name
+        wmma::fragment<wmma::accumulator, WMMA_M, WMMA_N, WMMA_K, float> acc_frag;
+        ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(25): error : type name is not allowed
+        wmma::fragment<wmma::accumulator, WMMA_M, WMMA_N, WMMA_K, float> acc_frag;
+                                                                  ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(25): error : identifier "acc_frag" is undefined
+        wmma::fragment<wmma::accumulator, WMMA_M, WMMA_N, WMMA_K, float> acc_frag;
+                                                                         ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(27): error : name followed by "::" must be a class or namespace name
+        wmma::fill_fragment(acc_frag, 0.0f);
+        ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(36): error : name followed by "::" must be a class or namespace name
+            wmma::load_matrix_sync(a_frag, a_tile_ptr, K);
+            ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(41): error : name followed by "::" must be a class or namespace name
+            wmma::load_matrix_sync(b_frag, b_tile_ptr, K);
+            ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(43): error : name followed by "::" must be a class or namespace name
+            wmma::mma_sync(acc_frag, a_frag, b_frag, acc_frag);
+            ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(49): error : name followed by "::" must be a class or namespace name
+        wmma::store_matrix_sync(d_tile_ptr, acc_frag, N, wmma::mem_row_major);
+        ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(49): error : name followed by "::" must be a class or namespace name
+        wmma::store_matrix_sync(d_tile_ptr, acc_frag, N, wmma::mem_row_major);
+                                                         ^
+  
+D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu(58): error : more than one operator "<<" matches these operands:
+              function "std::basic_ostream<_Elem, _Traits>::operator<<(__nv_bool) [with _Elem=char, _Traits=std::char_traits<char>]" (declared at line 212 of C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream)
+              function "std::basic_ostream<_Elem, _Traits>::operator<<(short) [with _Elem=char, _Traits=std::char_traits<char>]" (declared at line 230 of C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream)
+              function "std::basic_ostream<_Elem, _Traits>::operator<<(unsigned short) [with _Elem=char, _Traits=std::char_traits<char>]" (declared at line 264 of C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream)
+              function "std::basic_ostream<_Elem, _Traits>::operator<<(int) [with _Elem=char, _Traits=std::char_traits<char>]" (declared at line 283 of C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream)
+              function "std::basic_ostream<_Elem, _Traits>::operator<<(unsigned int) [with _Elem=char, _Traits=std::char_traits<char>]" (declared at line 309 of C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream)
+              function "std::basic_ostream<_Elem, _Traits>::operator<<(long) [with _Elem=char, _Traits=std::char_traits<char>]" (declared at line 328 of C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream)
+              function "std::basic_ostream<_Elem, _Traits>::operator<<(unsigned long) [with _Elem=char, _Traits=std::char_traits<char>]" (declared at line 346 of C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream)
+              function "std::basic_ostream<_Elem, _Traits>::operator<<(long long) [with _Elem=char, _Traits=std::char_traits<char>]" (declared at line 364 of C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream)
+              function "std::basic_ostream<_Elem, _Traits>::operator<<(unsigned long long) [with _Elem=char, _Traits=std::char_traits<char>]" (declared at line 382 of C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream)
+              function "std::basic_ostream<_Elem, _Traits>::operator<<(float) [with _Elem=char, _Traits=std::char_traits<char>]" (declared at line 400 of C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream)
+              operand types are: std::ostream << const half
+                std::cout << matrix[i * cols + j] << "\t";
+                          ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream(486): note #3326-D: function "std::basic_ostream<_Elem, _Traits>::operator<<(std::basic_ostream<_Elem, _Traits>::_Mysb *) [with _Elem=char, _Traits=std::char_traits<char>]" does not match because argument #1 does not match parameter
+        basic_ostream&  operator<<(_Mysb* _Strbuf) { 
+                        ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream(454): note #3326-D: function "std::basic_ostream<_Elem, _Traits>::operator<<(const void *) [with _Elem=char, _Traits=std::char_traits<char>]" does not match because argument #1 does not match parameter
+        basic_ostream&  operator<<(const void* _Val) { 
+                        ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream(436): note #3326-D: function "std::basic_ostream<_Elem, _Traits>::operator<<(long double) [with _Elem=char, _Traits=std::char_traits<char>]" does not match because argument #1 does not match parameter
+        basic_ostream&  operator<<(long double _Val) { 
+                        ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream(206): note #3326-D: function "std::basic_ostream<_Elem, _Traits>::operator<<(std::ios_base &(*)(std::ios_base &)) [with _Elem=char, _Traits=std::char_traits<char>]" does not match because argument #1 does not match parameter
+        basic_ostream&  operator<<(ios_base&(__cdecl* _Pfn)(ios_base&) ) {
+                        ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream(200): note #3326-D: function "std::basic_ostream<_Elem, _Traits>::operator<<(std::basic_ostream<_Elem, _Traits>::_Myios &(*)(std::basic_ostream<_Elem, _Traits>::_Myios &)) [with _Elem=char, _Traits=std::char_traits<char>]" does not match because argument #1 does not match parameter
+        basic_ostream&  operator<<(_Myios&(__cdecl* _Pfn)(_Myios&) ) {
+                        ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream(195): note #3326-D: function "std::basic_ostream<_Elem, _Traits>::operator<<(std::basic_ostream<_Elem, _Traits> &(*)(std::basic_ostream<_Elem, _Traits> &)) [with _Elem=char, _Traits=std::char_traits<char>]" does not match because argument #1 does not match parameter
+        basic_ostream&  operator<<(basic_ostream&(__cdecl* _Pfn)(basic_ostream&) ) {
+                        ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream(1088): note #3326-D: function template "std::operator<<(std::basic_ostream<_Elem, _Traits> &, const std::error_code &)" does not match because argument #2 does not match parameter
+    basic_ostream<_Elem, _Traits>& operator<<(basic_ostream<_Elem, _Traits>& _Ostr, const error_code& _Errcode) {
+                                   ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream(1011): note #3327-D: candidate function template "std::operator<<(_Ostr &&, const _Ty &)" failed deduction
+    _Ostr&& operator<<(_Ostr&& _Os, const _Ty& _Val) { 
+            ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream(947): note #3326-D: function template "std::operator<<(std::basic_ostream<char, _Traits> &, const unsigned char *)" does not match because argument #2 does not match parameter
+    basic_ostream<char, _Traits>& operator<<(basic_ostream<char, _Traits>& _Ostr, const unsigned char* _Val) {
+                                  ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream(936): note #3326-D: function template "std::operator<<(std::basic_ostream<char, _Traits> &, const signed char *)" does not match because argument #2 does not match parameter
+    basic_ostream<char, _Traits>& operator<<(basic_ostream<char, _Traits>& _Ostr, const signed char* _Val) {
+                                  ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream(900): note #3327-D: candidate function template "std::operator<<(std::basic_ostream<_Elem, _Traits> &, _Elem)" failed deduction
+    basic_ostream<_Elem, _Traits>& operator<<(basic_ostream<_Elem, _Traits>& _Ostr, _Elem _Ch) { 
+                                   ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream(857): note #3327-D: candidate function template "std::operator<<(std::basic_ostream<_Elem, _Traits> &, const _Elem *)" failed deduction
+    basic_ostream<_Elem, _Traits>& operator<<(basic_ostream<_Elem, _Traits>& _Ostr, const _Elem* _Val) { 
+                                   ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream(774): note #3326-D: function template "std::operator<<(std::basic_ostream<char, _Traits> &, const char *)" does not match because argument #2 does not match parameter
+    basic_ostream<char, _Traits>& operator<<(basic_ostream<char, _Traits>& _Ostr, const char* _Val) {
+                                  ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\ostream(694): note #3326-D: function template "std::operator<<(std::basic_ostream<_Elem, _Traits> &, const char *)" does not match because argument #2 does not match parameter
+    basic_ostream<_Elem, _Traits>& operator<<(basic_ostream<_Elem, _Traits>& _Ostr, const char* _Val) { 
+                                   ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3761): note #3327-D: candidate function template "std::operator<<(std::basic_ostream<_Elem, _Traits> &, const std::unique_ptr<_Yty, _Dx> &)" failed deduction
+    basic_ostream<_Elem, _Traits>& operator<<(basic_ostream<_Elem, _Traits>& _Out, const unique_ptr<_Yty, _Dx>& _Px) {
+                                   ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(1979): note #3327-D: candidate function template "std::operator<<(std::basic_ostream<_Elem, _Traits> &, const std::shared_ptr<_Ty> &)" failed deduction
+    basic_ostream<_Elem, _Traits>& operator<<(basic_ostream<_Elem, _Traits>& _Out, const shared_ptr<_Ty>& _Px) {
+                                   ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\xstring(3419): note #3327-D: candidate function template "std::operator<<(std::basic_ostream<_Elem, _Traits> &, const std::basic_string<_Elem, _Traits, _Alloc> &)" failed deduction
+    basic_ostream<_Elem, _Traits>& operator<<(
+                                   ^
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\system_error(173): note #3328-D: built-in operator<<(<promoted integral>, <promoted integral>) does not match because argument #1 does not match parameter
+        template <class _Enum, enable_if_t<is_error_code_enum_v<_Enum>, int> = 0>
+                                           ^
+            detected during instantiation of "void printMatrix(const char *, const T *, int, int) [with T=half]" at line 89
+  
+  19 errors detected in the compilation of "D:/GITHUB/100 days cuda/Day 03/matmul/kernel.cu".
+  kernel.cu
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\CUDA 12.4.targets(799,9): error MSB3721: The command ""C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\include" -I"D:\REPOS\vcpkg\vcpkg\installed\x64-windows\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\include"  -G   --keep-dir matmul\x64\Debug  -maxrregcount=0   --machine 64 --compile -cudart static  -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -Xcompiler "/Fdmatmul\x64\Debug\vc143.pdb" -o "D:\GITHUB\100 days cuda\Day 03\matmul\matmul\x64\Debug\kernel.cu.obj" "D:\GITHUB\100 days cuda\Day 03\matmul\kernel.cu"" exited with code 1.
