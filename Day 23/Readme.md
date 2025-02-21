@@ -61,6 +61,7 @@ __global__ void layernorm(float *input, float *output, int n) {
 ```cpp
     output[tid] = (input[tid] - mean) / sqrtf(var + 1e-5);
 ```
+![image](https://github.com/user-attachments/assets/a782c930-32b2-463c-a436-59c20f0fa1a2)
 
 
 ```cpp
@@ -98,7 +99,7 @@ __global__ void attention(float *Q, float *K, float *V, float *output, int n) {
     scores[tid] = Q[tid] * K[tid];
     __syncthreads();
 ```
-- **Dot product computation:** \( \text{score} = Q \times K^T \)
+- **Dot product computation:** score = Q * K^T
 
 ```cpp
     printf("Thread %d: Raw Score = %.2f\n", tid, scores[tid]);
@@ -118,7 +119,8 @@ __global__ void attention(float *Q, float *K, float *V, float *output, int n) {
     __syncthreads();
 ```
 - **Computes softmax score:**
-  \[ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} \]
+  
+![image](https://github.com/user-attachments/assets/845dd14b-beed-499a-8a3c-3516ff314c28)
 
 ```cpp
     printf("Thread %d: Softmax Score = %.2f\n", tid, softmax_scores[tid]);
@@ -128,7 +130,7 @@ __global__ void attention(float *Q, float *K, float *V, float *output, int n) {
 ```cpp
     output[tid] = softmax_scores[tid] * V[tid];
 ```
-- **Weighted sum computation:** \( \, \text{Attention Output} = \text{Softmax} \times V \)
+- **Weighted sum computation:** : Attention Output = Softmax * V)
 
 ```cpp
     printf("Thread %d: Output = %.2f\n", tid, output[tid]);
