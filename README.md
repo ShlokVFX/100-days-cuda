@@ -10,7 +10,7 @@ This repository documents my 100-day journey of learning CUDA programming, writi
 
 | Day  | Output Summary | Notes | Link |
 |------|--------------|-------|------|
-| 1    | Vector Addition Kernel | Learned basic CUDA syntax and kernel execution. | [Day 1](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2001/Notes.md) |
+| 1    |  [Vector Addition Kernel](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2001/Output.png)  | Learned basic CUDA syntax and kernel execution. | [Day 1](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2001/Notes.md) |
 | 2    | Matrix Multiplication Kernel | Explored thread indexing and grid-block mapping. | [Day 2](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2002/Notes.md) |
 | 3    | Shared Memory Optimization | Improved memory access using shared memory. | [Day 3](./day3/) |
 | 4    | Memory Coalescing Experiment | Optimized global memory access patterns. | [Day 4](./day4/) |
@@ -22,15 +22,4 @@ This repository documents my 100-day journey of learning CUDA programming, writi
 - Write optimized and efficient GPU kernels.
 - Explore memory hierarchy, warp scheduling, and Tensor Cores.
 - Apply CUDA to deep learning and high-performance computing.
-
-## How to Use This Repo:
-Each day's progress is documented in separate folders with code, results, and performance analysis.
-
-🚀 Happy Coding!
-
-
-
-
-
-| 1    | Vector Addition Kernel | Learned basic CUDA syntax and kernel execution. | [Day 1](./day1/) |
 
