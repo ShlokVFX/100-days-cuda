@@ -138,9 +138,6 @@ __global__ void attention(float *Q, float *K, float *V, float *output, int n) {
 - **Final debug print** to check final weighted sum.
 
 ---
-
-## ** Output Example**
-
 ### **LayerNorm Output:**
 ```sh
 Running LayerNorm Kernel:
