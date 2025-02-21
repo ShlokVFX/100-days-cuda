@@ -61,9 +61,7 @@ __global__ void layernorm(float *input, float *output, int n) {
 ```cpp
     output[tid] = (input[tid] - mean) / sqrtf(var + 1e-5);
 ```
-- **Applies normalization formula**:
-  \[ \text{normalized} = \frac{(x - \text{mean})}{\sqrt{\text{variance} + \epsilon}} \]
-  where \( \epsilon \) prevents division by zero.
+
 
 ```cpp
     printf("Thread %d: Input = %.2f, Mean = %.2f, Variance = %.5f, Normalized = %.2f\n", tid, input[tid], mean, var, output[tid]);
