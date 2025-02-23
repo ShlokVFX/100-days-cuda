@@ -1,7 +1,3 @@
-Below is an outline of answers to each of the technical questions, along with detailed explanations and examples where appropriate.
-
----
-
 ## **CUDA and GPU Architecture**
 
 ### 1. Explain how the L1TEX cache combines texture and data caching. How does this affect occupancy? 
@@ -180,11 +176,3 @@ Based on these metrics, I restructured the kernel with better tiling, improved s
 
 By prioritizing these metrics, the profiling system can provide actionable insights—enabling targeted optimizations at both the kernel and the system level to ensure efficient scaling of distributed training.”
 
----
-
-### **References and Context**
-
-These answers combine insights from:
-- NVIDIA’s official documentation on Nsight Compute and Nsight Systems.
-- Best practices for GPU kernel optimization (occupancy, memory throughput, and warp divergence).
-- General industry practices for profiling distributed training systems (using tools like Prometheus/Grafana for system-level monitoring).
