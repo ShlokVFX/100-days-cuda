@@ -5,13 +5,12 @@
 #define N (1024*1024)
 #define ITERATIONS 100
 
-// Naïve kernel: performs 100 iterations and replicates the sum eight times,
-// suffering from branch divergence and high register pressure.
+// Naïve kernel: performs 100 iterations (with branch divergence) and then replicates the sum eight times.
 __global__ void naiveKernel(float *a, float *b, float *c, int n) {
     int idx = threadIdx.x + blockIdx.x * blockDim.x;
     if (idx < n) {
         float sum = 0.0f;
-        // Branch divergence: even threads multiply, odd threads add.
+        // Branch divergence: even indices use multiplication; odd indices use addition.
         if (idx % 2 == 0) {
             for (int i = 0; i < ITERATIONS; i++) {
                 sum += a[idx] * b[idx];
@@ -21,8 +20,7 @@ __global__ void naiveKernel(float *a, float *b, float *c, int n) {
                 sum += a[idx] + b[idx];
             }
         }
-        // Replicate the sum eight times (increasing register pressure)
-        // which effectively multiplies the sum by 8.
+        // Replicate the result eight times (i.e. multiply by 8)
         float temp1 = sum;
         float temp2 = sum;
         float temp3 = sum;
@@ -35,25 +33,44 @@ __global__ void naiveKernel(float *a, float *b, float *c, int n) {
     }
 }
 
-// Fully optimized kernel: since the iterative loop is a constant accumulation,
-// we can replace it with a single multiplication. This kernel avoids loops,
-// branch divergence, and extra temporary variables.
-__global__ void fullyOptimizedKernel(float *a, float *b, float *c, int n) {
+// Warptiled kernel: unrolls the loop by a factor of 8 into independent accumulators.
+// This increases ILP and helps hide long scoreboard stalls.
+// It computes the per-thread “unit” value once (using a flag to choose between multiply or add)
+// then performs ITERATIONS iterations (with remainder handled if ITERATIONS isn't divisible by 8)
+// and finally replicates the result by multiplying by 8.
+__global__ void warptiledKernel(float *a, float *b, float *c, int n) {
     int idx = threadIdx.x + blockIdx.x * blockDim.x;
     if (idx < n) {
-        // Load from global memory once.
         float valA = a[idx];
         float valB = b[idx];
-        // Compute a flag: 1.0 if even, 0.0 if odd.
-        float flag = (idx % 2 == 0) ? 1.0f : 0.0f;
-        // Using the flag, choose between multiplication or addition.
-        // This is equivalent to:
-        //   if (even) result = a[idx]*b[idx]
-        //   else        result = a[idx]+b[idx]
-        float result = flag * (valA * valB) + (1.0f - flag) * (valA + valB);
-        // Each kernel originally loops 100 iterations and then replicates 8 times,
-        // so the final answer is simply result * 800.
-        c[idx] = result * 800.0f;
+        // Compute the per-iteration unit based on thread index parity.
+        // For even: use a[idx]*b[idx]; for odd: use a[idx]+b[idx].
+        float unit = (idx % 2 == 0) ? (valA * valB) : (valA + valB);
+
+        // Unroll the 100 iterations by a factor of 8 using 8 independent accumulators.
+        float sum0 = 0.0f, sum1 = 0.0f, sum2 = 0.0f, sum3 = 0.0f;
+        float sum4 = 0.0f, sum5 = 0.0f, sum6 = 0.0f, sum7 = 0.0f;
+        int unrollFactor = 8;
+        int iter = ITERATIONS / unrollFactor;  // integer division
+        for (int i = 0; i < iter; i++) {
+            sum0 += unit;
+            sum1 += unit;
+            sum2 += unit;
+            sum3 += unit;
+            sum4 += unit;
+            sum5 += unit;
+            sum6 += unit;
+            sum7 += unit;
+        }
+        // Handle remaining iterations if ITERATIONS is not a multiple of 8.
+        int remainder = ITERATIONS - iter * unrollFactor;
+        float sumR = 0.0f;
+        for (int i = 0; i < remainder; i++) {
+            sumR += unit;
+        }
+        float sum = sum0 + sum1 + sum2 + sum3 + sum4 + sum5 + sum6 + sum7 + sumR;
+        // Replicate the result eight times.
+        c[idx] = sum * 8.0f;
     }
 }
 
@@ -61,7 +78,7 @@ int main() {
     int n = N;
     size_t size = n * sizeof(float);
 
-    // Allocate host memory.
+    // Allocate host arrays.
     float *h_a = (float*) malloc(size);
     float *h_b = (float*) malloc(size);
     float *h_c = (float*) malloc(size);
@@ -90,24 +107,21 @@ int main() {
     // --------------------------
     naiveKernel<<<numBlocks, blockSize>>>(d_a, d_b, d_c, n);
     cudaDeviceSynchronize();
-
-    // (Optional) Copy results back to host for correctness check.
     cudaMemcpy(h_c, d_c, size, cudaMemcpyDeviceToHost);
     printf("Naïve Kernel Results (first 10 elements):\n");
     for (int i = 0; i < 10; i++) {
-         printf("c[%d] = %f\n", i, h_c[i]);
+        printf("c[%d] = %f\n", i, h_c[i]);
     }
 
     // --------------------------
-    // Run the fully optimized kernel.
+    // Run the warptiled kernel.
     // --------------------------
-    fullyOptimizedKernel<<<numBlocks, blockSize>>>(d_a, d_b, d_c, n);
+    warptiledKernel<<<numBlocks, blockSize>>>(d_a, d_b, d_c, n);
     cudaDeviceSynchronize();
-
     cudaMemcpy(h_c, d_c, size, cudaMemcpyDeviceToHost);
-    printf("\nFully Optimized Kernel Results (first 10 elements):\n");
+    printf("\nWarptiled Kernel Results (first 10 elements):\n");
     for (int i = 0; i < 10; i++) {
-         printf("c[%d] = %f\n", i, h_c[i]);
+        printf("c[%d] = %f\n", i, h_c[i]);
     }
 
     // Cleanup.
