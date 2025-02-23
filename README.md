@@ -20,6 +20,25 @@ This repository documents my 100-day journey of learning CUDA programming, writi
 | 8    |  [WMMA (Tensor Core with Double buffering)](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2008/wmma_tensored.png)  | WMMA leverages specialized Tensor Cores on NVIDIA GPUs to accelerate matrix multiplications.| [Day 8](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2008/Readme.md) |
 | 9    |  [Speeds Comparisons Matmul](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2009/Output.png)  | Naive vs Tiled vs Thread Tiling vs WMMA/Tensor Core | [Day 9](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2009/Readme.md) |
 | 10   |  [Advance Profiling](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2010/MatMulProfiling.png)  | Importance of CUDA Profiling, Using Nsight systems  | [Day 10](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2010/Readme.md) |
+| 11   |  [Cuda Basic Softmax](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2011/output.png)  | Understanding Softmax  Algorithm and implementing in Cuda  | [Day 11](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2011/Readme.md) |
+| 12   |  [Better Softmax](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2012/output.png)  | Optimizing Softmax  Algorithm and Benchmarking it | [Day 12](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2012/Readme.md) |
+| 13   |  [SoftMax FP16 Acceleration](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2013/Gflops.png)  | Higher Speedup achieved when used FP16 tensor cores optimization | [Day 13](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2013/Readme.md) |
+| 14   |  [Tensor MatMul](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2014/output.png)  | Naive vs Tensor core Matmul | [Day 14](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2014/Readme.md) |
+| 15   |  [CUDA Graphs](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2015/output.png)  | Reduced Overhead , Improved Performance, Simplified Code | [Day 15](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2015/Readme.md) |
+| 16   |  [SoftMax SuperFast](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2016/output.png)  |Implemented Cuda Algorithm that uses CuDNN + CudaStreams with FP16 Accelaration| [Day 16](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2016/Readme.md) |
+| 17   |  [cuBLAS VectorAdd](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2017/output.png)  | cuBLAS to perform Vector Addition and Benchmarking it | [Day 17](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2017/Readme.md) |
+| 18  |  [cuBLAS MatrixMultiplication](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2015/output.png)  | cuBLAS matmul with cuRAND for random num generation and benchmarking it | [Day 18](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2018/Readme.md) |
+| 19  |  [Sum Reduction](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2019/output.png)  | Performs a parallel reduction of the input array in blocks. Each thread adds elements in a range, and shared memory is used for efficient intra-block communication. | [Day 19](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2019/Readme.md) |
+| 20 |  [1D/2D Convolution](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2020/output.png)  | 1D convolution is used primarily in signal processing. 2D convolution is used primarily in image processing| [Day 20](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2020/Readme.md) |
+| 21 |  [Triton](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2021/output.png)  | Working with Triton , used Tutorials from Triton Documentation to run VectorAdd , matmul and softmax kernel| [Day 21](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2021/Readme.md) |
+| 22 |  [Fused Softmax in Triton](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2022/output.png)  | Triton fused softmax implementation provides a highly efficient way to compute the softmax function on GPUs. By fusing multiple operations into a single kernel, it achieves better performance compared to traditional implementations.  | [Day 22](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2022/Readme.md) |
+| 23 |  [LayerNorm and Flash Attention](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2023/output.png)  | Basic layerNorm and FlashAttention implementation in Cuda  | [Day 23](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2023/Readme.md) |
+| 24 |  [Profiling Errors Solving](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2023/output.png)  | Solved Questions related to profiling. Created strategies, before and after examples with command line debugging tools, and optimization techniques for GPU performance tuning.| [Day 24](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2024/Readme.md) |
+
+
+
+
+
 
 
 ## Goals:
