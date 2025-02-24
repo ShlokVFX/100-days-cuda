@@ -2,7 +2,10 @@
 # CUDA FFT Project: Fast Fourier Transform Explained for Teens
 
 ## Introduction
-Hey there! Imagine listening to your favorite song and being able to see all the hidden musical notes that make up the tune. That’s what the **Fast Fourier Transform (FFT)** does—it takes a signal (like sound) and shows you its individual frequencies (the notes). In this project, we use CUDA (a way to make your computer's graphics card do serious math) to run an FFT quickly on the GPU.
+Hey there! Imagine listening to your favorite song and being able to see all the hidden musical notes
+that make up the tune. That’s what the **Fast Fourier Transform (FFT)** does—it takes a signal (like sound)
+and shows you its individual frequencies (the notes). In this project, we use CUDA (a way to make your
+computer's graphics card do serious math) to run an FFT quickly on the GPU.
 
 ## What Is FFT?
 FFT stands for **Fast Fourier Transform**. Think of it like this:
