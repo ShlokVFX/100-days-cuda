@@ -1,7 +1,3 @@
-Below is a sample **README.md** file that explains the FFT project in a way that’s friendly for a teenager, and then walks you through the code line by line.
-
----
-
 ```markdown
 # CUDA FFT Project: Fast Fourier Transform Explained for Teens
 
