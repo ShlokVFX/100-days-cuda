@@ -36,6 +36,7 @@ This repository documents my 100-day journey of learning CUDA programming, writi
 | 24 |  [Profiling Errors Solving](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2024/LOW-OCCUPANCY/Output.png)  | Solved Questions related to profiling. Created strategies, before and after examples with command line debugging tools, and optimization techniques for GPU performance tuning.| [Day 24](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2024/Readme.md) |
 | 25 |  [Blelloch Prefix Scan ](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2025/Output.png)  | Blelloch Prefix Scan using shared memory for efficiency.Solved More question related to design and GPU architecture.| [Day 25](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2025/Readme.md) |
 | 26 |  [FFT with Profiling](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2026/Output.png)  | Fast Fourier Transform (FFT) Using Shared Memory + Profiling | [Day 26](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2026/Readme.md) |
+| 27 |  [Matmul_naive](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2027/Output.png)  |Hit learning block so just repeated writing Naive Matmul on LEETGPU.com .  | [Day 27](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2027/Readme.md) |
 
 
 
