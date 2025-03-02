@@ -9,7 +9,7 @@ This CUDA program implements optimized vector addition using `half2` (FP16) and 
 - **Error Handling**: Includes CUDA error checking to ensure safe execution.
 - **Alignment Checks**: Prevents misaligned memory access for `half2` operations.
 
-## Code Explanation (Line by Line)
+## Code Explanation:
 
 ### 1. Includes and Definitions
 ```cpp
@@ -173,9 +173,6 @@ nvcc -arch=sm_75 -o vector_add vector_add.cu
 ## Performance Considerations
 - Uses vectorized operations for efficiency.
 - Ensures proper memory access patterns.
-
-## License
-MIT License.
 
 ## Author
 Part of **100 Days of Learning CUDA Kernels** challenge.
