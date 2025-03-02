@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 3.18)
+project(CUDA_Benchmark LANGUAGES CUDA CXX)
+
+# Set CUDA architecture (modify based on GPU)
+set(CMAKE_CUDA_ARCHITECTURES 86)  # RTX 3060 = Compute Capability 8.6
+
+# Enable CUDA compilation
+enable_language(CUDA)
+
+# Set CUDA compilation flags
+set(CMAKE_CUDA_STANDARD 14)
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -use_fast_math -lineinfo")
+
+# Define the executable
+add_executable(benchmark 
+    src/benchmark.cu 
+    src/vector_add.cu
+)
+
+# Specify target properties
+set_target_properties(benchmark PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
+    CUDA_RUNTIME_LIBRARY Static
+)
+
+# Add include directories
+target_include_directories(benchmark PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
