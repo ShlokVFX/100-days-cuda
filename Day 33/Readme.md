@@ -1,0 +1,1 @@
+went through his Github repo and builded his code to learn furthur optimization of h100
