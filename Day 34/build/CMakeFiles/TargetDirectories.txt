@@ -1,0 +1,4 @@
+/mnt/d/GITHUB/100 days cuda/Day 34/build/CMakeFiles/matmul.dir
+/mnt/d/GITHUB/100 days cuda/Day 34/build/CMakeFiles/benchmark.dir
+/mnt/d/GITHUB/100 days cuda/Day 34/build/CMakeFiles/edit_cache.dir
+/mnt/d/GITHUB/100 days cuda/Day 34/build/CMakeFiles/rebuild_cache.dir

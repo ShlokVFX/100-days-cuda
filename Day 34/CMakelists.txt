@@ -1,0 +1,42 @@
+cmake_minimum_required(VERSION 3.18)
+project(MatMul_CUDA LANGUAGES CXX CUDA)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CUDA_STANDARD 17)
+
+# Enable CUDA
+enable_language(CUDA)
+
+# Define include directory
+include_directories(${PROJECT_SOURCE_DIR}/include)
+
+# Set CUDA compilation flags for performance
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -O3 --use_fast_math")
+
+# Source files (excluding benchmark.cu to avoid multiple main definitions)
+set(MATMUL_SOURCES
+    src/main.cu
+    src/matmul.cu
+)
+
+# Create main executable
+add_executable(matmul ${MATMUL_SOURCES})
+
+# Set target properties for CUDA
+set_target_properties(matmul PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
+    CUDA_ARCHITECTURES 86  # RTX 3060 (Ampere)
+)
+
+# Link CUDA runtime
+target_link_libraries(matmul cuda)
+
+# Create separate benchmark executable
+add_executable(benchmark src/benchmark.cu src/matmul.cu)
+
+set_target_properties(benchmark PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
+    CUDA_ARCHITECTURES 86
+)
+
+target_link_libraries(benchmark cuda)
