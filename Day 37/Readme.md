@@ -64,17 +64,3 @@ The program will output:
 
 - **Optimization:**  
   Further tuning (e.g., enhanced memory access patterns, shared memory tiling, and better thread management) may improve performance.
-
-## License
-
-[Insert License Information Here]
-
-## Acknowledgments
-
-This project is inspired by Google DeepMind’s AlphaTensor work and serves as a demonstration of how such an algorithm can be modeled and benchmarked in CUDA.
-
-```
-
----
-
-Feel free to customize the README (e.g., license, acknowledgments) as needed for your repository.
