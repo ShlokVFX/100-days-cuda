@@ -39,10 +39,6 @@ The benchmark performs multiplication on large matrices (e.g., 8192×8192) by pa
   - Computes intermediate products \( p[r] \) for \( r = 0, \dots, R-1 \) using a simplified formula.
   - Combines the intermediates with a coefficient matrix \( W \) to generate the output block.
 
-## Mathematical Formulation
-
-![image](https://github.com/user-attachments/assets/d17df0db-efde-44f6-bf19-5c322a1818c9)
-
 ## Running the Benchmark
 
 After compiling, run the executable:
@@ -50,6 +46,7 @@ After compiling, run the executable:
 ```bash
 ./ATT
 ```
+![image](https://github.com/user-attachments/assets/076041a4-9a6d-49e0-97c6-dfaadc049da1)
 
 The program will output:
 - The overall matrix dimensions.
