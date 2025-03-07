@@ -41,48 +41,7 @@ The benchmark performs multiplication on large matrices (e.g., 8192×8192) by pa
 
 ## Mathematical Formulation
 
-For each 3×3 block of the output matrix \( C \):
-1. **Intermediate Products:**
-
-   For each \( r = 0, \dots, R-1 \):
-   \[
-   p[r] = \left( \sum_{i=0}^{2} U_{i,r} \cdot a_{i,0} \right) \times \left( \sum_{i=0}^{2} V_{i,r} \cdot b_{i,0} \right),
-   \]
-   where \( a_{i,0} \) and \( b_{i,0} \) are the elements from the first column of the corresponding 3×3 blocks of \( A \) and \( B \), respectively.
-
-2. **Output Block Calculation:**
-
-   For each element in the 3×3 block (flattened index \( k \), where \( k = 3i + j \) for row \( i \) and column \( j \)):
-   \[
-   c_{ij} = \sum_{r=0}^{R-1} W_{k,r} \cdot p[r].
-   \]
-
-*Note:* In this demonstration, all dummy factorization coefficients \( U \), \( V \), and \( W \) are initialized to 1.0. A full implementation would load these coefficients from a learned factorization to minimize the number of multiplications.
-
-## Code Structure
-
-- **`optimized_alphatensor.cu`**  
-  Contains:
-  - The **naive GEMM kernel** (`naiveMatMulKernel`) for baseline performance.
-  - The **AlphaTensor-inspired kernel** (`alphaTensorLargeMatMulKernel`) which partitions the matrices into 3×3 blocks and applies the bilinear factorization.
-  - The `main()` function that:
-    - Allocates and initializes large matrices \( A \) and \( B \) using unified memory.
-    - Launches both kernels using CUDA events for timing.
-    - Reports the execution times and computes the speedup of the optimized kernel relative to the baseline.
-
-## Prerequisites
-
-- CUDA-capable GPU (tested on NVIDIA GPUs).
-- NVIDIA CUDA Toolkit installed.
-- C++ compiler with CUDA support (e.g., `nvcc`).
-
-## Compilation
-
-Compile the code using the following command (adjust `DIM` as needed; it must be a multiple of 3):
-
-```bash
-nvcc -DDIM=8192 -o ATT optimized_alphatensor.cu
-```
+![image](https://github.com/user-attachments/assets/d17df0db-efde-44f6-bf19-5c322a1818c9)
 
 ## Running the Benchmark
 
