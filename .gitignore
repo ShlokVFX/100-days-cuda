@@ -2,3 +2,4 @@ Day3/AtomicAddition.cu
 Day 13/.vscode/settings.json
 *.json
 /Day 37/AlphaTensor
+/Day 38/llvm-project
