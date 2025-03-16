@@ -2,7 +2,7 @@
 #include <cuda_runtime.h>
 #include <cusolverDn.h>
 
-#define N 3  // Size of the matrix
+#define N 3
 
 void checkCudaError(cudaError_t err, const char* msg) {
     if (err != cudaSuccess) {
