@@ -11,8 +11,7 @@ This repository documents my 100-day journey of learning CUDA programming, writi
 | Day  | Link | Notes |
 |------|--------------|-------|
 | 1    |  [Vector Addition Kernel](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2001)  | Learned basic CUDA syntax and kernel execution - Vector Addtion and printing Hello Cuda. |
-| 2    | [Benchmarking Vector Add](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2002) | Explored about Benchmarking in Cuda with Vector Add. | 
-
+| 2    | [Benchmarking Vector Add](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2002) | Explored about Benchmarking in Cuda with Vector Add. |
 | 3    |  [Cuda Streams](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2003/CudaStreams_result.png) [AtomicAddtion](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2003/AtomicAdditionResult.png) |CUDA Stream is a sequence of operations (memory transfers, kernel launches, etc.) that execute in order within the stream, but operations in different streams can run concurrently. | [Day 3](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2003/Readme.md) |
 | 4    | [Unified Mem VectorAdd](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2004/VectorAdd_withErrorCheck.png)  |  Unified Memory simplifies memory management by allowing the CPU and GPU to share the same memory space. | [Day 4](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2004/Readme.md) |
 | 5    |  [Tiled MatMul](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2005/Output.png)  | Matrix Multiplication in CUDA using shared memory to optimize performance. Tiling improves memory access efficiency by reducing global memory accesses and leveraging shared memory for faster computation. | [Day 5](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2005/Readme.md) |
