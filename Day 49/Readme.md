@@ -1,0 +1,3 @@
+This CUDA program compares dense and sparse compression. It first creates a random matrix with some values set to zero for sparsity. The dense compression part rounds values to reduce data size, while the sparse compression uses cuSPARSE to convert the matrix into a more efficient format by removing near-zero values.  
+
+Pinned memory helps speed up data transfers, and CUDA streams run both processes at the same time. Dense compression took about **100 ms**, while sparse compression finished in **20 ms**, showing a clear advantage for the sparse method when dealing with large data.
