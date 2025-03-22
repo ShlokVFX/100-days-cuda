@@ -38,8 +38,7 @@ This repository documents my 100-day journey of learning CUDA programming, writi
 | 26 |  [FFT with Profiling](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2026)  | Fast Fourier Transform (FFT) Using Shared Memory + Profiling |
 | 27 |  [Matmul_naive](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2027)  |Hit learning block so just repeated writing Naive Matmul on LEETGPU.com .  |
 | 28 |  [CuTLASS](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2028)  | Tried CUTLASS , added CudaEvents and modified basic code to support like previous days naive matmul . Also made profile report using ncu |
-| 29 |  [Shared Matmul Competitive](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2029)  | Wrote shared Matmul for competitive coding, optimizing performance with tiling and CUDA streams.
-Many of many submissions either failed or gave errors ended up submitting simplest naive kernel. |
+| 29 |  [Shared Matmul Competitive](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2029)  | Wrote shared Matmul for competitive coding, optimizing performance with tiling and CUDA streams. |
 | 30 |  [Vectorized Tiled Matmul](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2030)  | vectorized tiled shared mem matmul. Improved my previous days Naive matmul GFLOPS from ~ 450 to 1500 on tensara website. |
 | 31 |  [Faster Float2 Vectorization](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2031)  | 
 float2 Vectorization for faster memory coalescing |
