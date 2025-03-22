@@ -36,15 +36,39 @@ This repository documents my 100-day journey of learning CUDA programming, writi
 | 24 |  [Profiling Errors Solving](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2024/LOW-OCCUPANCY)  | Solved Questions related to profiling. Created strategies, before and after examples with command line debugging tools, and optimization techniques for GPU performance tuning.|
 | 25 |  [Blelloch Prefix Scan ](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2025)  | Blelloch Prefix Scan using shared memory for efficiency.Solved More question related to design and GPU architecture.|
 | 26 |  [FFT with Profiling](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2026)  | Fast Fourier Transform (FFT) Using Shared Memory + Profiling |
-| 27 |  [Matmul_naive](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2027)  |Hit learning block so just repeated writing Naive Matmul on LEETGPU.com .  | 
+| 27 |  [Matmul_naive](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2027)  |Hit learning block so just repeated writing Naive Matmul on LEETGPU.com .  |
+| 28 |  [CuTLASS](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2028)  | Tried CUTLASS , added CudaEvents and modified basic code to support like previous days naive matmul . Also made profile report using ncu |
+| 29 |  [Shared Matmul Competitive](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2029)  | Wrote shared Matmul for competitive coding, optimizing performance with tiling and CUDA streams.
+Many of many submissions either failed or gave errors ended up submitting simplest naive kernel. |
+| 30 |  [Vectorized Tiled Matmul](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2030)  | vectorized tiled shared mem matmul. Improved my previous days Naive matmul GFLOPS from ~ 450 to 1500 on tensara website. |
+| 31 |  [Faster Float2 Vectorization](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2031)  | 
+float2 Vectorization for faster memory coalescing |
+| 32 |  [FP16 Vector Addition ](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2032)  | Optimized FP16 Vector Addition using half2 for better memory efficiency |
+| 33 |  [Competitive Float2 Vector Addition ](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2033)  | Optimized CUDA kernel for element-wise vector addition using float2 for memory coalescing and efficiency. |
+| 34 |  [Cmake SGEMM](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2034)  |Implemented SGEMM on square matrices, tested on RTX 3060 (CMake) and Nvidia T4 (test website). Optimizations include shared memory tiling, float2 vectorized operations, and efficient memory access for better GPU performance. |
+| 35 |  [ReLU](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2035)  | Simple ReLU (Rectified Linear Unit) activation function in CUDA |
+| 36 |  [Leaky ReLU](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2036)  |Leaky ReLU (Leaky Rectified Linear Unit) activation function in CUDA |
+| 37 |  [Alphatensor](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2037)  |Deployed Google Deepmind Alphatensor matmul locally in my 3060. |
+| 38 |  [Basic PTX](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2038)  |Learned about running PTX code and its advantages in various metrics thoroughly also analyzed compiler-generated PTX to but struggled with installation will complete this tomorrow. |
+| 39 |  [Inline PTX](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2039)  |More PTX testing , command lines , cubin , Had Cuda API errors : probably bad installation . Used Compiler explorer website explore more ptx stuf and compiling.
+Locally also tested inline PTX assembly to load integers from global memory, add a constant value, and store the results back in global memory. |
+| 40 |  [More Inline PTX](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2040)  |Did multiple inline PTX cuda snippets/functionality separately like popc , Membar , rcp and shufl .
+Struggle with errors on both locally and compiler explorer with only shufl type so switched to
+cuda intrinsic __shuffle_sync() |
+| 41 |  [MLIR - 1](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2041)  |Worked on integrating MLIR with CUDA and successfully executed matrix addition.
+Initially faced issues with the gpu.launch method throwing numerous errors that even GPT couldn't resolve.
+Dropped that approach and directly integrated with the CUDA runtime. |
+| 42 |  [MLIR - 2](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2042)  |More MLIR stuff, The installation time and and Figuring out deprecated commands like from cpu-runner --> runner  |
+| 43 |  [INT8 Matmul](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2043)  |Wrote INT8 Matmul and compared it with FP32. The INT8 version was faster, but I messed up scaling and stream usage, causing high errors.
+Will try to reduce this MAE |
+| 44 |  [cuSolver - 1 ](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2044)  |Also busy with college assignments pushed one code a day . Solved Linear System using cuSolver (LU Decomposition)|
+| 45 |  [cuSolver - 2 ](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2045)  |QR Factorization |
+| 46 |  [cuSolver - 3 ](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2046)  |Cholesky Decomposition and Eigenvalue & Eigenvector|
+| 47 |  [cuSolver - 4 ](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2047)  |Singualr Value Decomposition|
+| 48 |  [cuSPARSE - 1 ](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2048)  |Sparse Matmul with cuSPARSE[CSR]|
+| 49 |  [cuSPARSE - 2 ](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2049)  |Compression with Grids of cuSolver [Dense]vs cuSPARSE [Sparse]|
+| 50 |  [Q-learning - 1](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2050)  |Used Q-learning with sparse matrices (CSR format) to make it efficient.|
+| 51 |  [Q-learning - 2](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2051)  |Started learning Tabular RL since I already tried previous day Q learning so today I Improved how the agent explores using Boltzmann exploration and Epsilon-Greedy.|
+| 52 |  [Multi-Armed Bandits - 1](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2051)  |Moved from Q-learning to Multi-Armed Bandits to learn action selection strategies.|
 
-
-
-
-
-## Goals:
-- Understand CUDA fundamentals.
-- Write optimized and efficient GPU kernels.
-- Explore memory hierarchy, warp scheduling, and Tensor Cores.
-- Apply CUDA to deep learning and high-performance computing.
 
