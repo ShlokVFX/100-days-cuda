@@ -62,5 +62,6 @@ This repository documents my 100-day journey of learning CUDA programming, writi
 | 50 |  [Q-learning - 1](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2050)  |Used Q-learning with sparse matrices (CSR format) to make it efficient.|
 | 51 |  [Q-learning - 2](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2051)  |Started learning Tabular RL since I already tried previous day Q learning so today I Improved how the agent explores using Boltzmann exploration and Epsilon-Greedy.|
 | 52 |  [Multi-Armed Bandits - 1](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2051)  |Moved from Q-learning to Multi-Armed Bandits to learn action selection strategies.|
+| 53 |  [Markov Decision Process](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2051)  |Working With MDP sim where it learns from rewards from basic grid .|
 
 
