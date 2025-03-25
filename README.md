@@ -61,7 +61,9 @@ This repository documents my 100-day journey of learning CUDA programming, writi
 | 49 |  [cuSPARSE - 2 ](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2049)  |Compression with Grids of cuSolver [Dense]vs cuSPARSE [Sparse]|
 | 50 |  [Q-learning - 1](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2050)  |Used Q-learning with sparse matrices (CSR format) to make it efficient.|
 | 51 |  [Q-learning - 2](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2051)  |Started learning Tabular RL since I already tried previous day Q learning so today I Improved how the agent explores using Boltzmann exploration and Epsilon-Greedy.|
-| 52 |  [Multi-Armed Bandits - 1](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2051)  |Moved from Q-learning to Multi-Armed Bandits to learn action selection strategies.|
-| 53 |  [Markov Decision Process](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2051)  |Working With MDP sim where it learns from rewards from basic grid .|
+| 52 |  [Multi-Armed Bandits - 1](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2052)  |Moved from Q-learning to Multi-Armed Bandits to learn action selection strategies.|
+| 53 |  [Markov Decision Process](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2053)  |Working With MDP sim where it learns from rewards from basic grid .|
+| 54 |  [Q-Learning -3](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2054)  |Q-learning algorithm , achieved Unstable Q-values result , will improve.|
+| 55 |  [Q-Learning -4](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2055)  |Q-values are more controlled Almost 50, making more stable agent.The extreme values (99.999, 88.999) from Day 54 are gone.|
 
 
