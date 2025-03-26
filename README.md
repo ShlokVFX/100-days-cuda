@@ -65,6 +65,6 @@ This repository documents my 100-day journey of learning CUDA programming, writi
 | 53 |  [Markov Decision Process](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2053)  |Working With MDP sim where it learns from rewards from basic grid .|
 | 54 |  [Q-Learning -3](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2054)  |Q-learning algorithm , achieved Unstable Q-values result , will improve.|
 | 55 |  [Q-Learning -4](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2055)  |Q-values are more controlled Almost 50, making more stable agent.The extreme values (99.999, 88.999) from Day 54 are gone.|
-| 56 |  [](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2056)  |Implemented SARSA today. It is much more stable and less aggressive than Q-learning, as it follows the current policy instead of always taking the greedy action.|
+| 56 |  [SARSA](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2056)  |Implemented SARSA today. It is much more stable and less aggressive than Q-learning, as it follows the current policy instead of always taking the greedy action.|
 
 
