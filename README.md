@@ -66,5 +66,11 @@ This repository documents my 100-day journey of learning CUDA programming, writi
 | 54 |  [Q-Learning -3](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2054)  |Q-learning algorithm , achieved Unstable Q-values result , will improve.|
 | 55 |  [Q-Learning -4](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2055)  |Q-values are more controlled Almost 50, making more stable agent.The extreme values (99.999, 88.999) from Day 54 are gone.|
 | 56 |  [SARSA](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2056)  |Implemented SARSA today. It is much more stable and less aggressive than Q-learning, as it follows the current policy instead of always taking the greedy action.|
+| 57 |  [Expected SARSA](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2057)  |Completed Expected SARSA with lower Q Values and even more stable than previous days SARSA.|
+| 58 |  [Double Q-Learning](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2058)  |Double Q-Learning implementation , initially it didn't quite work with lower Q values so had to adjust learning rate, normalized rewards, and reduced epsilon decay to ensure better Q-value progression and stability.|
+
+
+
+
 
 
