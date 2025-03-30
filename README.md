@@ -68,6 +68,8 @@ This repository documents my 100-day journey of learning CUDA programming, writi
 | 56 |  [SARSA](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2056)  |Implemented SARSA today. It is much more stable and less aggressive than Q-learning, as it follows the current policy instead of always taking the greedy action.|
 | 57 |  [Expected SARSA](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2057)  |Completed Expected SARSA with lower Q Values and even more stable than previous days SARSA.|
 | 58 |  [Double Q-Learning](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2058)  |Double Q-Learning implementation , initially it didn't quite work with lower Q values so had to adjust learning rate, normalized rewards, and reduced epsilon decay to ensure better Q-value progression and stability.|
+| 59 |  [Dynamic Programming](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2059)  |Today, I worked on Policy Iteration using the Bellman Expectation Equation, which is better suited for smaller action spaces. I also implemented Value Iteration using the Bellman Optimality Equation, which works well when dealing with a larger number of states and actions.|
+
 
 
 
