@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.18)
+project(dqn_frozenlake LANGUAGES CXX CUDA)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+find_package(Torch REQUIRED)
+
+add_executable(dqn_frozenlake dqn_frozenlake.cu)
+target_link_libraries(dqn_frozenlake "${TORCH_LIBRARIES}")
+set_property(TARGET dqn_frozenlake PROPERTY CXX_STANDARD 17)
