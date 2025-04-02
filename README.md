@@ -72,7 +72,7 @@ This repository documents my 100-day journey of learning CUDA programming, writi
 | 60 |  [Monte Carlo & Temporal Difference Learning](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2060)  |I first implemented Monte Carlo policy evaluation, which estimates values based on complete episodes. Then, I explored Temporal Difference (TD) learning, starting with TD(0), which updates values step by step. Finally, I extended it to TD(λ), introducing eligibility traces to blend Monte Carlo and Dynamic Programming approaches.|
 | 61 |  [DQN Test/Check](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2061)  |I started working on DQN today—just the basics. Faced some big installation issues with the supported PyTorch version but fixed them later by setting up a virtual environment.Finally,ran a test to check if DQN was working properly with my installed toolkit 12.4.|
 | 62 |  [DQN - Frozen Lake](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2062)  |implemented DQN using LibTorch and CUDA for the Frozen Lake environment, focusing on optimizing Deep RL with GPU acceleration. Used Python for initial testing and leveraged LLMs for code assistance.|
-
+| 63 |  [Benchamrking - DQN and PPO [Cartpole] ](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2063)  |Benchmarked DQN (CartPole) and PPO (Atari EnvPool) from the Learn RL repo by PyTorch Labs.The PPO (Atari EnvPool) implementation used torch.compile, which had CUDA Graphs enabled by default to reduce CPU overhead.Encountered the warning: "Not enough SMs to use max_autotune_gemm mode." on PPO file but anyways got he models executed successfully, with performance and training metrics logged on Weights & Biases (wandb.ai).|
 
 
 
