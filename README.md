@@ -73,7 +73,7 @@ This repository documents my 100-day journey of learning CUDA programming, writi
 | 61 |  [DQN Test/Check](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2061)  |I started working on DQN today—just the basics. Faced some big installation issues with the supported PyTorch version but fixed them later by setting up a virtual environment.Finally,ran a test to check if DQN was working properly with my installed toolkit 12.4.|
 | 62 |  [DQN - Frozen Lake](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2062)  |implemented DQN using LibTorch and CUDA for the Frozen Lake environment, focusing on optimizing Deep RL with GPU acceleration. Used Python for initial testing and leveraged LLMs for code assistance.|
 | 63 |  [Benchamrking - DQN and PPO [Cartpole] ](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2063)  |Benchmarked DQN (CartPole) and PPO (Atari EnvPool) from the Learn RL repo by PyTorch Labs.The PPO (Atari EnvPool) implementation used torch.compile, which had CUDA Graphs enabled by default to reduce CPU overhead.Encountered the warning: "Not enough SMs to use max_autotune_gemm mode." on PPO file but anyways got he models executed successfully, with performance and training metrics logged on Weights & Biases (wandb.ai).|
-
+| 64 |  [DQN - Atari Model] ](https://github.com/ShlokVFX/100-days-cuda/blob/main/Day%2064)  |Worked on forward propagation in a one-layer network using CUDA. Also read this DQN paper:https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf out of curiosity, built a simplified DQN model with just 100 training frames using Claude.|
 
 
 
