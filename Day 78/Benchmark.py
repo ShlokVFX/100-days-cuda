@@ -1,91 +1,91 @@
 import re
-import math
 from statistics import geometric_mean
 
 benchmark_text = """
 k: 7168; m: 1024; n: 1536; seed: 8135
- ⏱ 705 ± 0.7 µs
- ⚡ 700 µs 🐌 741 µs
+ ⏱ 3.42 ± 0.003 ms
+ ⚡ 3.35 ms 🐌 3.61 ms
 
 k: 1536; m: 1024; n: 3072; seed: 6251
- ⏱ 277 ± 0.5 µs
- ⚡ 269 µs 🐌 317 µs
+ ⏱ 1375 ± 2.4 µs
+ ⚡ 1330 µs 🐌 1469 µs
 
 k: 7168; m: 1024; n: 576; seed: 12346
- ⏱ 369 ± 0.6 µs
- ⚡ 365 µs 🐌 401 µs
+ ⏱ 1337 ± 4.3 µs
+ ⚡ 1267 µs 🐌 1480 µs
 
 k: 256; m: 1024; n: 7168; seed: 5364
- ⏱ 207 ± 0.6 µs
- ⚡ 202 µs 🐌 243 µs
+ ⏱ 540 ± 1.8 µs
+ ⚡ 503 µs 🐌 600 µs
 
 k: 2048; m: 1024; n: 7168; seed: 6132
- ⏱ 620 ± 0.7 µs
- ⚡ 601 µs 🐌 660 µs
+ ⏱ 4.24 ± 0.004 ms
+ ⚡ 4.20 ms 🐌 4.33 ms
 
 k: 7168; m: 1024; n: 4608; seed: 7531
- ⏱ 1472 ± 4.6 µs
- ⚡ 1424 µs 🐌 1892 µs
+ ⏱ 9.91 ± 0.010 ms
+ ⚡ 9.84 ms 🐌 10.0 ms
 
 k: 2304; m: 1024; n: 7168; seed: 12345
- ⏱ 666 ± 1.0 µs
- ⚡ 649 µs 🐌 705 µs
+ ⏱ 4.78 ± 0.005 ms
+ ⚡ 4.73 ms 🐌 4.89 ms
 
 k: 7168; m: 1024; n: 512; seed: 6563
- ⏱ 341 ± 0.8 µs
- ⚡ 334 µs 🐌 371 µs
+ ⏱ 1178 ± 3.8 µs
+ ⚡ 1116 µs 🐌 1297 µs
 
 k: 512; m: 1024; n: 4096; seed: 17512
- ⏱ 194 ± 0.4 µs
- ⚡ 191 µs 🐌 231 µs
+ ⏱ 613 ± 1.5 µs
+ ⚡ 581 µs 🐌 665 µs
 
 k: 7168; m: 6144; n: 1536; seed: 6543
- ⏱ 2.44 ± 0.070 ms
- ⚡ 2.30 ms 🐌 9.39 ms
+ ⏱ 24.7 ± 0.02 ms
+ ⚡ 24.6 ms 🐌 25.2 ms
 
 k: 1536; m: 6144; n: 3072; seed: 234
- ⏱ 983 ± 1.5 µs
- ⚡ 943 µs 🐌 1025 µs
+ ⏱ 9.12 ± 0.009 ms
+ ⚡ 9.07 ms 🐌 9.40 ms
 
 k: 7168; m: 6144; n: 576; seed: 9863
- ⏱ 1436 ± 2.0 µs
- ⚡ 1398 µs 🐌 1486 µs
+ ⏱ 8.09 ± 0.008 ms
+ ⚡ 8.02 ms 🐌 8.20 ms
 
 k: 256; m: 6144; n: 7168; seed: 764243
- ⏱ 497 ± 1.4 µs
- ⚡ 468 µs 🐌 556 µs
+ ⏱ 3.19 ± 0.003 ms
+ ⚡ 3.14 ms 🐌 3.39 ms
 
 k: 2048; m: 6144; n: 7168; seed: 76547
- ⏱ 2.64 ± 0.099 ms
- ⚡ 2.41 ms 🐌 12.4 ms
+ ⏱ 28.7 ± 0.03 ms
+ ⚡ 28.6 ms 🐌 28.8 ms
 
 k: 7168; m: 6144; n: 4608; seed: 65436
- ⏱ 6.02 ± 0.097 ms
- ⚡ 5.63 ms 🐌 15.3 ms
+ ⏱ 75.0 ± 0.06 ms
+ ⚡ 74.9 ms 🐌 75.1 ms
 
 k: 2304; m: 6144; n: 7168; seed: 452345
- ⏱ 2.89 ± 0.004 ms
- ⚡ 2.80 ms 🐌 2.98 ms
+ ⏱ 32.4 ± 0.03 ms
+ ⚡ 32.3 ms 🐌 32.8 ms
 
 k: 7168; m: 6144; n: 512; seed: 12341
- ⏱ 1283 ± 3.1 µs
- ⚡ 1225 µs 🐌 1356 µs
+ ⏱ 7.99 ± 0.008 ms
+ ⚡ 7.95 ms 🐌 8.03 ms
 
 k: 512; m: 6144; n: 4096; seed: 45245
- ⏱ 503 ± 0.9 µs
- ⚡ 489 µs 🐌 546 µs
- """
+ ⏱ 3.64 ± 0.004 ms
+ ⚡ 3.59 ms 🐌 3.88 ms
+"""
 
-# Extract all mean times after ⏱ using regex
-mean_times_microseconds = re.findall(r'⏱\s*([\d.]+)\s*±', benchmark_text)
+# Extract all mean times with units (µs or ms)
+# This regex captures the value and the unit separately
+mean_times_with_units = re.findall(r'⏱\s*([\d.]+)\s*±.*?(µs|ms)', benchmark_text)
 
-# Convert all times to float (and ms to µs where needed)
+# Convert all times to microseconds based on their unit
 times_in_microseconds = []
-for time in mean_times_microseconds:
-    value = float(time)
-    if value < 10:  # assume it's in milliseconds if it's very small
-        value *= 1000  # convert ms to µs
-    times_in_microseconds.append(value)
+for value, unit in mean_times_with_units:
+    time = float(value)
+    if unit == "ms":
+        time *= 1000  # convert ms to µs
+    times_in_microseconds.append(time)
 
 # Calculate geometric mean
 geo_mean = geometric_mean(times_in_microseconds)
