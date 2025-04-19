@@ -12,3 +12,13 @@ Day 61/torch-env/bin/activate
 Day 77/FP8_Triton_torch.py
 Day 77/FP8_pytorch_implementation.py
 /Day 79/__pycache__
+Day 79/fake_fp8_gemm
+Day 79/fake_fp8_gemm.cu
+Day 79/Hip/HIP_main.py
+Day 79/HIP_main.py
+Day 79/rocm_TMA.py
+Day 79/submission.py
+Day 79/transpose
+Day 79/transpose.cu
+Day 79/submission.py
+Day 79/Hip/HIP_main.py
