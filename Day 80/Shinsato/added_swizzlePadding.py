@@ -93,7 +93,7 @@ __global__ void fp8_mm_kernel(const __hip_fp8_e4m3_fnuz *A,
 
     // compute MFMA over sub-blocks
     for (size_t off = 0; off < BK; off += 16) {
-#pragma unroll
+      
       for (size_t i = 0; i < 8; ++i) {
         size_t ra = off + warpY * 8 + i;
         size_t ca = warpRowOffset + warpX;
@@ -103,7 +103,7 @@ __global__ void fp8_mm_kernel(const __hip_fp8_e4m3_fnuz *A,
       floatx16 res = {0};
       res = __builtin_amdgcn_mfma_f32_32x32x16_fp8_fp8(*reinterpret_cast<long*>(a), *reinterpret_cast<long*>(b), res, 0,0,0);
       float bscale = Ws[BN];
-#pragma unroll 2
+      
       for (size_t j = 0; j < 4; ++j)
         for (size_t i = 0; i < 4; ++i)
           acc[i+j*4] += res[i+j*4] * Ws[warpRowOffset + j*8 + warpY*4 + i] * bscale;
@@ -112,8 +112,6 @@ __global__ void fp8_mm_kernel(const __hip_fp8_e4m3_fnuz *A,
     __syncthreads();
   }
 
-  // write back
-#pragma unroll 2
   for (size_t j = 0; j < 4; ++j)
     for (size_t i = 0; i < 4; ++i) {
       size_t r = rowOffsetC + warpRowOffset + j*8 + warpY*4 + i;
