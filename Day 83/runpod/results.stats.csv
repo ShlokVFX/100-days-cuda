@@ -1,0 +1,2 @@
+"Name","Calls","TotalDurationNs","AverageNs","Percentage"
+"gemm_fp16_kernel(__half*, __half*, __half*, int, int, int)",2,3170826,1585413,100.0
