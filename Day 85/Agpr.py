@@ -65,10 +65,10 @@ __global__ void fp8_mm_kernel(const __hip_fp8_e4m3_fnuz *A,
   __shared__ float Ws[2][BN + 1];  // +1 for B scale
 
   // Registers for loading data
-  __hip_fp8_e4m3_fnuz a[8], b[8];
+  __hip_fp8_e4m3_fnuz a[16], b[16];
   
-  // Accumulator registers
-  floatx16 d = {0};
+  // Accumulator registers - increase number of AGPRs by using multiple accumulators
+  floatx16 d[4] = {{0}, {0}, {0}, {0}};
 
   // Thread indices for vector loading
   size_t innerColA = threadIdx.x % (BN / VECTOR_SIZE);
@@ -165,26 +165,50 @@ __global__ void fp8_mm_kernel(const __hip_fp8_e4m3_fnuz *A,
       }
     }
 
-    // Process current tile in chunks of 16 (MFMA input size)
-    for (size_t BKOffset = 0; BKOffset < BK; BKOffset += 16) {
-      // Load data into registers for MFMA
+    // Process current tile in smaller chunks to increase AGPR usage
+    for (size_t BKOffset = 0; BKOffset < BK; BKOffset += 8) {
+      // Load data into registers for multiple MFMA operations
       for (size_t i = 0; i < 8; ++i) {
-        a[i] = As[current_buffer][BKOffset + warpY * 8 + i][warpRowOffset + warpX];
-        b[i] = Bs[current_buffer][BKOffset + warpY * 8 + i][warpColOffset + warpX];
+        a[i] = As[current_buffer][BKOffset + i][warpRowOffset + warpX];
+        a[i+8] = As[current_buffer][BKOffset + i][warpRowOffset + warpX + 16];
+        b[i] = Bs[current_buffer][BKOffset + i][warpColOffset + warpX];
+        b[i+8] = Bs[current_buffer][BKOffset + i][warpColOffset + warpX + 16];
       }
 
-      // Execute MFMA operation
-      floatx16 c = {0};
-      c = __builtin_amdgcn_mfma_f32_32x32x16_fp8_fp8(
+      // Execute four MFMA operations with different input submatrices
+      // This increases AGPR usage significantly
+      floatx16 c0 = {0}, c1 = {0}, c2 = {0}, c3 = {0};
+      
+      // Use different parts of the matrices for each MFMA to increase AGPR usage
+      c0 = __builtin_amdgcn_mfma_f32_32x32x8_fp8_fp8(
           *reinterpret_cast<long *>(a), 
           *reinterpret_cast<long *>(b), 
-          c, 0, 0, 0);
+          c0, 0, 0, 0);
+          
+      c1 = __builtin_amdgcn_mfma_f32_32x32x8_fp8_fp8(
+          *reinterpret_cast<long *>(a+8), 
+          *reinterpret_cast<long *>(b), 
+          c1, 0, 0, 0);
+          
+      c2 = __builtin_amdgcn_mfma_f32_32x32x8_fp8_fp8(
+          *reinterpret_cast<long *>(a), 
+          *reinterpret_cast<long *>(b+8), 
+          c2, 0, 0, 0);
+          
+      c3 = __builtin_amdgcn_mfma_f32_32x32x8_fp8_fp8(
+          *reinterpret_cast<long *>(a+8), 
+          *reinterpret_cast<long *>(b+8), 
+          c3, 0, 0, 0);
 
       // Apply scaling factors
       float b_scale = Ws[current_buffer][BN];
       for (size_t j = 0; j < 4; ++j) {
         for (size_t i = 0; i < 4; ++i) {
-          d[i + j * 4] += c[i + j * 4] * Ws[current_buffer][warpRowOffset + j * 8 + warpY * 4 + i] * b_scale;
+          // Distribute accumulation across multiple AGPRs
+          d[0][i + j * 4] += c0[i + j * 4] * Ws[current_buffer][warpRowOffset + j * 8 + i] * b_scale;
+          d[1][i + j * 4] += c1[i + j * 4] * Ws[current_buffer][warpRowOffset + 16 + j * 8 + i] * b_scale;
+          d[2][i + j * 4] += c2[i + j * 4] * Ws[current_buffer][warpRowOffset + j * 8 + i] * b_scale;
+          d[3][i + j * 4] += c3[i + j * 4] * Ws[current_buffer][warpRowOffset + 16 + j * 8 + i] * b_scale;
         }
       }
     }
@@ -196,13 +220,19 @@ __global__ void fp8_mm_kernel(const __hip_fp8_e4m3_fnuz *A,
     next_buffer = 1 - next_buffer;
   }
 
+  // Combine results from multiple AGPRs
+  floatx16 final_d = {0};
+  for (int i = 0; i < 16; i++) {
+    final_d[i] = d[0][i] + d[1][i] + d[2][i] + d[3][i];
+  }
+
   // Write results back to global memory
   for (size_t j = 0; j < 4; ++j) {
     for (size_t i = 0; i < 4; ++i) {
       if ((rowOffsetC + warpRowOffset + j * 8 + warpY * 4 + i) < N &&
           (colOffsetC + warpColOffset + warpX) < M) {
         C[(rowOffsetC + warpRowOffset + j * 8 + warpY * 4 + i) * M + 
-          (colOffsetC + warpColOffset + warpX)] = (__hip_bfloat16)d[i + j * 4];
+          (colOffsetC + warpColOffset + warpX)] = (__hip_bfloat16)final_d[i + j * 4];
       }
     }
   }
@@ -210,7 +240,7 @@ __global__ void fp8_mm_kernel(const __hip_fp8_e4m3_fnuz *A,
 
 at::Tensor fp8_mm(at::Tensor A, at::Tensor B, at::Tensor A_scale,
                   at::Tensor B_scale, at::Tensor C) {
-  size_t N = A.size(0), K = A.size(1), M = B.size(0);
+  size_t N = A.size(0), K = A.size(1), M = B.size(1);
   
   // Use the block dimensions from the fixed constants
   const size_t BK = BLOCK_K;
@@ -246,7 +276,13 @@ module = load_inline(
     cuda_sources=[cuda_src],
     functions=["fp8_mm"],
     verbose=True,
-    extra_cuda_cflags=["-O3", "--offload-arch=gfx942", "-std=c++20", "-ffp-contract=fast"],
+    extra_cuda_cflags=[
+  "-O3",
+  "--offload-arch=gfx942",
+  "-std=c++20",
+  "-ffp-contract=fast",
+]
+
 )
 
 def custom_kernel(data: input_t) -> output_t:
