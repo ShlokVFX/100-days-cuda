@@ -1,0 +1,3 @@
+"Name","Calls","TotalDurationNs","AverageNs","Percentage","MinNs","MaxNs","StdDev"
+"void fp8_mm_kernel<128ul, 128ul, 128ul, 1ul, 1ul>(__hip_fp8_e4m3_fnuz const*, __hip_fp8_e4m3_fnuz const*, float const*, float const*, __hip_bfloat16*, unsigned long, unsigned long, unsigned long)",198,94796524,478770.323232,99.94,43218,2289477,500835.311492
+"__amd_rocclr_copyBuffer",18,55486,3082.555556,0.0585,2566,3849,352.975457

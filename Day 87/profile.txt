@@ -1,0 +1,2 @@
+
+hipcc -O3 -g --offload-arch=gfx942 -std=c++20 -Wno-unused-result hip_fp8_mm_benchmark.cpp -o hip_fp8_benchmark
