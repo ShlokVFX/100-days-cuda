@@ -181,8 +181,8 @@ at::Tensor fp8_mm(at::Tensor A, at::Tensor B, at::Tensor A_scale,
   const size_t BK = 128;
   const size_t BN = 128;
   const size_t BM = 128;
-  const size_t WITERN = 2;
-  const size_t WITERM = 2;
+  const size_t WITERN = 1;
+  const size_t WITERM = 1;
 
   dim3 numThreads(1024, 1, 1);
   dim3 numBlocks(cdiv(M, BM), cdiv(N, BN));

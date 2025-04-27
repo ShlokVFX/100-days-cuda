@@ -1,7 +1,3 @@
-import re
-from statistics import geometric_mean
-
-benchmark_text = """
 k: 7168; m: 1024; n: 1536; seed: 8135
  ⏱ 319 ± 0.4 µs
  ⚡ 317 µs 🐌 352 µs
@@ -73,23 +69,3 @@ k: 7168; m: 6144; n: 512; seed: 12341
 k: 512; m: 6144; n: 4096; seed: 45245
  ⏱ 146 ± 0.4 µs
  ⚡ 141 µs 🐌 175 µs
-"""
-
-# Extract all mean times with units (µs or ms)
-# This regex captures the value and the unit separately
-mean_times_with_units = re.findall(r'⏱\s*([\d.]+)\s*±.*?(µs|ms)', benchmark_text)
-
-# Convert all times to microseconds based on their unit
-times_in_microseconds = []
-for value, unit in mean_times_with_units:
-    time = float(value)
-    if unit == "ms":
-        time *= 1000  # convert ms to µs
-    times_in_microseconds.append(time)
-
-# Calculate geometric mean
-geo_mean = geometric_mean(times_in_microseconds)
-
-# Output
-print("Collected mean times (µs):", times_in_microseconds)
-print("Geometric mean (µs):", geo_mean)
