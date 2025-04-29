@@ -1,0 +1,1 @@
+"-mcpu=wavefrontsize64",
