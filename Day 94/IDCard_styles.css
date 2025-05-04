@@ -1,0 +1,220 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --primary-light: #eef2ff;
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--gray-100);
+  color: var(--gray-800);
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--space-lg);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 32rem;
+}
+
+/* ID Card */
+.id-card {
+  background-color: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.id-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Header */
+.card-header {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.card-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-xs);
+}
+
+.institution {
+  font-size: 1.125rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Card Body */
+.card-body {
+  padding: var(--space-lg);
+  display: flex;
+  gap: var(--space-xl);
+}
+
+/* Photo Section */
+.photo-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 40%;
+}
+
+.photo-container {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--gray-100);
+}
+
+.photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.department {
+  background-color: var(--primary-light);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+}
+
+.department .label {
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.department .value {
+  font-weight: 500;
+  color: var(--primary-dark);
+}
+
+/* Details Section */
+.details-section {
+  flex: 1;
+}
+
+.student-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.info-item dt {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray-500);
+  font-weight: 600;
+}
+
+.info-item dd {
+  font-size: 1rem;
+  color: var(--gray-800);
+  font-weight: 500;
+  word-break: break-word;
+}
+
+/* Footer */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  border-top: 1px solid var(--gray-200);
+  color: var(--gray-600);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .card-body {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .photo-section {
+    width: 80%;
+    max-width: 12rem;
+    margin-bottom: var(--space-md);
+  }
+  
+  .details-section {
+    width: 100%;
+  }
+  
+  .student-info {
+    gap: var(--space-md);
+  }
+  
+  .card-footer {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+}

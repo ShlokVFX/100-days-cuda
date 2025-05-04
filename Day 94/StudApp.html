@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student ID Card Application</title>
+    <style>
+        /* Import clean, modern font */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+        /* Modern CSS Reset */
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+
+        /* Custom Properties - aligned with IDCard styling */
+        :root {
+          /* Colors */
+          --primary: #4f46e5;
+          --primary-dark: #4338ca;
+          --primary-light: #eef2ff;
+          --white: #ffffff;
+          --gray-50: #f9fafb;
+          --gray-100: #f3f4f6;
+          --gray-200: #e5e7eb;
+          --gray-300: #d1d5db;
+          --gray-400: #9ca3af;
+          --gray-500: #6b7280;
+          --gray-600: #4b5563;
+          --gray-700: #374151;
+          --gray-800: #1f2937;
+          
+          /* Spacing */
+          --space-xs: 0.25rem;
+          --space-sm: 0.5rem;
+          --space-md: 1rem;
+          --space-lg: 1.5rem;
+          --space-xl: 2rem;
+          
+          /* Border Radius */
+          --radius-sm: 0.25rem;
+          --radius-md: 0.5rem;
+          --radius-lg: 0.75rem;
+          --radius-xl: 1rem;
+          
+          /* Shadows */
+          --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+          --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--gray-100);
+            color: var(--gray-800);
+            line-height: 1.5;
+            margin: 0;
+            padding: var(--space-lg);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background-color: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            padding: var(--space-xl);
+            width: 100%;
+            max-width: 500px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .container:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        h1, h2 {
+            text-align: center;
+            color: var(--gray-800);
+            margin-bottom: var(--space-lg);
+            font-weight: 700;
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: var(--space-sm);
+            font-weight: 600;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+        }
+        
+        input {
+            width: 100%;
+            padding: var(--space-md);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+        
+        input[readonly] {
+            background-color: var(--gray-50);
+            cursor: not-allowed;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: var(--space-xs);
+            display: none;
+        }
+        
+        button {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            width: 100%;
+            transition: background-color 0.3s;
+            margin-bottom: var(--space-sm);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .section-divider {
+            border-top: 1px solid var(--gray-200);
+            margin: var(--space-xl) 0;
+            position: relative;
+        }
+        
+        .section-divider::before {
+            content: "OR";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            padding: 0 var(--space-md);
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+        
+        .retrieve-section {
+            background-color: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-lg);
+        }
+        
+        .tab-nav {
+            display: flex;
+            margin-bottom: var(--space-xl);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: var(--space-md);
+            text-align: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray-500);
+            margin-bottom: 0;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tab-nav">
+            <button type="button" class="tab-btn active" onclick="showTab('form')">Application Form</button>
+            <button type="button" class="tab-btn" onclick="showTab('retrieve')">Retrieve Data</button>
+        </div>
+        
+        <div id="form-tab" class="tab-content active">
+            <h1>Student ID Card Application</h1>
+            <form id="studentForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" onfocusout="validateName()">
+                    <div id="nameError" class="error-message">Name should contain only alphabets and spaces</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dob">Date of Birth (dd/mm/yyyy)</label>
+                    <input type="text" id="dob" name="dob" placeholder="dd/mm/yyyy" onfocusout="validateDOB()">
+                    <div id="dobError" class="error-message">Date must be in dd/mm/yyyy format</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="text" id="age" name="age" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="text" id="mobile" name="mobile" placeholder="Enter your mobile number" onfocusout="validateMobile()">
+                    <div id="mobileError" class="error-message">Mobile number must contain only digits and cannot start with 0</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email ID</label>
+                    <input type="text" id="email" name="email" placeholder="Enter your email address" onfocusout="validateEmail()">
+                    <div id="emailError" class="error-message">Email must contain '@' and end with '.com' or '.in'</div>
+                </div>
+                
+                <button type="button" onclick="submitForm()">Submit Application</button>
+            </form>
+        </div>
+        
+        <div id="retrieve-tab" class="tab-content">
+            <h2>Retrieve Student Data</h2>
+            <div class="form-group">
+                <label for="searchMobile">Mobile Number</label>
+                <input type="text" id="searchMobile" placeholder="Enter mobile number to retrieve data">
+            </div>
+            
+            <button type="button" onclick="retrieveCookie()">Retrieve Data</button>
+        </div>
+    </div>
+    
+    <script src="StudentApp.js"></script>
+</body>
+</html>
