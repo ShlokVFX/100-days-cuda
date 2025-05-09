@@ -2,7 +2,6 @@
 #!POPCORN gpus MI300
 
 import os
-import sys
 from task import input_t, output_t
 from torch.utils.cpp_extension import load_inline
 
@@ -377,11 +376,6 @@ at::Tensor fp8_mm(at::Tensor A, at::Tensor B, at::Tensor A_scale,
                   at::Tensor B_scale, at::Tensor C);
 """
 
-if sys.stdout is None:
-    sys.stdout = open("/dev/stdout", "w")
-if sys.stderr is None:
-    sys.stderr = open("/dev/stderr", "w")
-
 module = load_inline(
     name="fp8_mm",
     cpp_sources=[cpp_src],
@@ -393,8 +387,6 @@ module = load_inline(
         "--offload-arch=gfx942",
         "-std=c++20",
         "-ffp-contract=fast",
-        "-lhip_hcc",
-         "-mcumode",
     ],
 )
 
