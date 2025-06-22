@@ -1,0 +1,2 @@
+dhidden: 7168; dexpert: 2048; nroutedexperts: 32; nsharedexperts: 1; nexpertspertoken: 4; bs: 1; seqlen: 2048; seed: 9371
+dhidden: 7168; dexpert: 2048; nroutedexperts: 32; nsharedexperts: 1; nexpertspertoken: 4; bs: 1; seqlen: 8192; seed: 1212
