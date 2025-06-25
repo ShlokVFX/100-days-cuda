@@ -232,7 +232,7 @@ for i, bar in enumerate(bars):
             f'{times[i]:.1f}µs', ha='center', va='bottom', fontsize=8)
 
 plt.tight_layout()
-plt.savefig("triton_matmul_benchmark.png", dpi=300, bbox_inches='tight')
+#plt.savefig("triton_matmul_benchmark.png", dpi=300, bbox_inches='tight')
 #plt.show()
 
 # Summary statistics
@@ -240,6 +240,3 @@ mean_time = sum(times) / len(times)
 print(f"\nTriton Matrix Multiplication Benchmark Summary:")
 print(f"Total test cases: {len(test_cases)}")
 print(f"Mean execution time: {mean_time:.2f} µs")
-print(f"Min execution time: {min(times):.2f} µs")
-print(f"Max execution time: {max(times):.2f} µs")
-print(f"Standard deviation: {np.std(times):.2f} µs")
